@@ -1,0 +1,31 @@
+{
+  "name": "business-card-builder-gh-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --noEmit && ncc build index.ts -o dist -m",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SophiaSaiada/business-card-builder-gh-action.git"
+  },
+  "author": "Sophia Saiada <contact at sophiasa dot dev>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SophiaSaiada/business-card-builder-gh-action/issues"
+  },
+  "homepage": "https://github.com/SophiaSaiada/business-card-builder-gh-action#readme",
+  "devDependencies": {
+    "@types/node": "^14.0.13",
+    "typescript": "^3.9.5",
+    "@zeit/ncc": "^0.22.1"
+  },
+  "dependencies": {
+    "@actions/core": "^1.1.0",
+    "@actions/exec": "^1.0.1",
+    "@actions/github": "^1.1.0",
+    "@actions/io": "^1.0.1"
+  }
+}

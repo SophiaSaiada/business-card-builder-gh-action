@@ -1,0 +1,26 @@
+name: "Business Card Build"
+description: "Build and deploy business card to GitHub Pages."
+inputs:
+  access-token:
+    description: "A personal access token needed to push your site after it has been built."
+    required: true
+  deploy-branch:
+    description: "The branch expected by GitHub to have the static files needed for your site."
+    required: false
+    default: "master"
+  deploy-repo:
+    description: "The repo expected by GitHub to have the static files needed for your site."
+    required: false
+    default: ""
+  builder-script-version:
+    description: "The version of business-card-builder-script to use."
+    required: false
+    default: "latest"
+  on-done-webhook-url:
+    description: "The url of onDone webhook."
+    required: false
+    default: ""
+    
+runs:
+  using: "node12"
+  main: "./dist/index.js"
