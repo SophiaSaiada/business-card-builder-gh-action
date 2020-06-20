@@ -72,7 +72,8 @@ async function run(): Promise<void> {
     const PUBLIC_DIR = "./public";
 
     console.log("Cleaning public folder...");
-    await exec.exec(`rm -rf ${PUBLIC_DIR} && mkdir public`);
+    await exec.exec(`rm -rf ${PUBLIC_DIR}`);
+    await exec.exec(`mkdir ${PUBLIC_DIR}`);
 
     const builderScriptVersion =
       core.getInput("builder-script-version") || "latest";
