@@ -69,9 +69,14 @@ async function run(): Promise<void> {
       return;
     }
 
+    const PUBLIC_DIR = "./public";
+
+    console.log("Cleaning public folder...");
+    await exec.exec(`rm -rf ${PUBLIC_DIR} && mkdir public`);
+
     const builderScriptVersion =
-      core.getInput("builder-script-version:") || "latest";
-    const command = `npx business-card-builder-script@${builderScriptVersion} .`;
+      core.getInput("builder-script-version") || "latest";
+    const command = `cat ./data.json | npx business-card-builder-html-gen@${builderScriptVersion} > ${PUBLIC_DIR}/index.html`;
     console.log(`Building with: ${command}`);
     await exec.exec(command);
     console.log("Finished building your site.");
