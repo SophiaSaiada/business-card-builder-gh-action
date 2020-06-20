@@ -78,7 +78,8 @@ async function run(): Promise<void> {
       core.getInput("builder-script-version") || "latest";
     const command = `cat ./data.json | npx business-card-builder-html-gen@${builderScriptVersion} > ${PUBLIC_DIR}/index.html`;
     console.log(`Building with: ${command}`);
-    await exec.exec(command);
+    // Without `/bin/bash -c` "|", "npx"... will be passed to `cat` as args
+    await exec.exec(`/bin/bash -c "${command}"`);
     console.log("Finished building your site.");
 
     const cnameExists = await ioUtil.exists("./CNAME");
